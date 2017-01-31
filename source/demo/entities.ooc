@@ -16,7 +16,7 @@ Entity: class {
     sprite: Sprite              /* Sprite */
                                 /* Optional: */
     scale: Vector2d             /* Display scale */
-    tint: SdlColor              /* Color to use as tint */
+    tint: SdlColor              /* SdlColor to use as tint */
     expires: Double             /* Countdown until expiration */
     health: Health              /* Track health */
     scaleTween: ScaleTween      /* scale Tweening variables*/
@@ -160,7 +160,7 @@ createBang: func(game: Game, renderer: SdlRenderer, id: Int) -> Entity {
 }
 
 createParticle: func(game: Game, renderer: SdlRenderer, id: Int) -> Entity {    
-    radians := Random random() * 6.28318
+    radians := Random random() * 6.28318 // Tau
     magnitude := Random randInt(0, 200)
     velocityX := magnitude * cos(radians)
     velocityY := magnitude * sin(radians)

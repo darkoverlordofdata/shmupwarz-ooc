@@ -12,7 +12,7 @@ Game: class {
     rawFont: RWops
     evt : SdlEvent
     renderer: SdlRenderer
-    mouse: Point2d
+    mouse: Point2d 
     inputs: Bool[]
     system: Systems
     entities: ArrayList<Entity>
@@ -102,22 +102,26 @@ Game: class {
     }
 
 
+    drawSprite: func(e: Entity) {
+        w := (e scale x != 0) ? e sprite width * e scale x : e sprite width
+        h := (e scale y != 0) ? e sprite height * e scale y : e sprite height
+        x := e position x - w / 2
+        y := e position y - h / 2
+        if (e tint r != 0 && e tint g != 0 && e tint b != 0) 
+            SDL setTextureColorMod(e sprite texture, e tint r, e tint g, e tint b)
+        SDL renderCopy(renderer, e sprite texture, null, (x, y, w, h) as SdlRect&)
+        
+    }
 
     draw: func(fps: Int)  {		
         
         SDL setRenderDrawColor(renderer, 110, 132, 174, 255)
 		SDL renderClear(renderer)
-        for (e in getEntities()) {
-            if (e active) {
-                w := (e scale x != 0) ? e sprite width * e scale x : e sprite width
-                h := (e scale y != 0) ? e sprite height * e scale y : e sprite height
-                x := e position x - w / 2
-                y := e position y - h / 2
-                if (e tint r != 0 && e tint g != 0 && e tint b != 0) 
-                    SDL setTextureColorMod(e sprite texture, e tint r, e tint g, e tint b)
-                SDL renderCopy(renderer, e sprite texture, null, (x, y, w, h) as SdlRect&)
-            }
+        for (e in entities) {
+            if (e active && e actor != Actor PLAYER)
+                drawSprite(e)
         }
+        drawSprite(entities[0]) // Player on Top!
         text := font renderUTF8Solid(fps toString(), (0,0,0,0) as SdlColor)
         texture := SDL createTextureFromSurface(renderer, text)
         SDL renderCopy(renderer, texture, null, (5, 5, 56, 28) as SdlRect&)
@@ -128,12 +132,25 @@ Game: class {
         system spawn(delta)
         system collision(delta)
         system input(delta, entities[0]) // entities[0] is the player
+        for (e in entities) system create(delta, e)
 
-        for (i in 1..entities size -1) system create(delta, entities[i])
-        for (i in 1..entities size -1) system expire(delta, entities[i])
-        for (i in 1..entities size -1) system physics(delta, entities[i])
-        for (i in 1..entities size -1) system scaleTween(delta, entities[i])
-        for (i in 1..entities size -1) system removeOffscreen(delta, entities[i])
+        act := ArrayList<Entity> new()
+        for (e in entities) if (e active) act add(e) 
+        for (e in act) system expire(delta, e)
+        for (e in act) system physics(delta, e)
+        for (e in act) system scaleTween(delta, e)
+        for (e in act) system removeOffscreen(delta, e)
+
+        // for (e in entities) system expire(delta, e)
+        // for (e in entities) system physics(delta, e)
+        // for (e in entities) system scaleTween(delta, e)
+        // for (e in entities) system removeOffscreen(delta, e)
+
+        // for (i in 1..entities size -1) system create(delta, entities[i])
+        // for (i in 1..entities size -1) system expire(delta, entities[i])
+        // for (i in 1..entities size -1) system physics(delta, entities[i])
+        // for (i in 1..entities size -1) system scaleTween(delta, entities[i])
+        // for (i in 1..entities size -1) system removeOffscreen(delta, entities[i])
     }
 
     getEntities: func() -> ArrayList<Entity> {
@@ -179,55 +196,6 @@ Game: class {
     initEntities: func {
         entities = [
             createPlayer(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBullet(this, renderer, getUniqueId()),
-            createBang(this, renderer, getUniqueId()),
-            createBang(this, renderer, getUniqueId()),
-            createBang(this, renderer, getUniqueId()),
-            createBang(this, renderer, getUniqueId()),
-            createBang(this, renderer, getUniqueId()),
-            createBang(this, renderer, getUniqueId()),
-            createBang(this, renderer, getUniqueId()),
-            createBang(this, renderer, getUniqueId()),
-            createExplosion(this, renderer, getUniqueId()),
-            createExplosion(this, renderer, getUniqueId()),
-            createExplosion(this, renderer, getUniqueId()),
-            createExplosion(this, renderer, getUniqueId()),
-            createExplosion(this, renderer, getUniqueId()),
-            createExplosion(this, renderer, getUniqueId()),
-            createExplosion(this, renderer, getUniqueId()),
-            createExplosion(this, renderer, getUniqueId()),
             createEnemy1(this, renderer, getUniqueId()),
             createEnemy1(this, renderer, getUniqueId()),
             createEnemy1(this, renderer, getUniqueId()),
@@ -286,7 +254,56 @@ Game: class {
             createParticle(this, renderer, getUniqueId()),
             createParticle(this, renderer, getUniqueId()),
             createParticle(this, renderer, getUniqueId()),
-            createParticle(this, renderer, getUniqueId())
+            createParticle(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBullet(this, renderer, getUniqueId()),
+            createBang(this, renderer, getUniqueId()),
+            createBang(this, renderer, getUniqueId()),
+            createBang(this, renderer, getUniqueId()),
+            createBang(this, renderer, getUniqueId()),
+            createBang(this, renderer, getUniqueId()),
+            createBang(this, renderer, getUniqueId()),
+            createBang(this, renderer, getUniqueId()),
+            createBang(this, renderer, getUniqueId()),
+            createExplosion(this, renderer, getUniqueId()),
+            createExplosion(this, renderer, getUniqueId()),
+            createExplosion(this, renderer, getUniqueId()),
+            createExplosion(this, renderer, getUniqueId()),
+            createExplosion(this, renderer, getUniqueId()),
+            createExplosion(this, renderer, getUniqueId()),
+            createExplosion(this, renderer, getUniqueId()),
+            createExplosion(this, renderer, getUniqueId())
         ] as ArrayList<Entity>
 
     }

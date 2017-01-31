@@ -89,25 +89,25 @@ Sprite: cover {
 Point2d: cover {
     x: Double
     y: Double
-    add: func(v: Vector2d) -> Point2d {
-        (x + v x, y + v y) as Point2d
-    }
-    sub: func(v: Vector2d) -> Point2d {
-        (x - v x, y - v y) as Point2d
-    }
+    // add: func(v: Vector2d) -> Point2d {
+    //     (x + v x, y + v y) as Point2d
+    // }
+    // sub: func(v: Vector2d) -> Point2d {
+    //     (x - v x, y - v y) as Point2d
+    // }
 }
 
 Vector2d: cover {
     x: Double
     y: Double
-    mul: func(f: Double) -> Vector2d {
-        (x * f, y * f) as Vector2d
-    }
-    div: func(f: Double) -> Vector2d {
-        (x / f, y / f) as Vector2d
-    }
-    len: func() -> Double {
-        sqrt(x * x + y * y)
-    }
+    // mul: func(f: Double) -> Vector2d {
+    //     (x * f, y * f) as Vector2d
+    // }
+    // div: func(f: Double) -> Vector2d {
+    //     (x / f, y / f) as Vector2d
+    // }
+    // len: func() -> Double {
+    //     sqrt(x * x + y * y)
+    // }
 }
 

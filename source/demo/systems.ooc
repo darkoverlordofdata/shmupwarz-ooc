@@ -7,7 +7,7 @@ import entities
 import components
 import game
 
-windowSize := (0, 0, 1280, 640) as SdlRect 	
+windowSize := (0, 0, 640, 720) as SdlRect 	
 
 Systems: class {
 
@@ -16,7 +16,7 @@ Systems: class {
     enemyT3: Double = Timer3 as Double
     FireRate : Double = 0.1
     timeToFire: Double
-    result: SdlRect
+    //result: SdlRect
     game: Game
 
     init: func(=game) {
@@ -193,7 +193,7 @@ Systems: class {
                     if (game bangs size > 0) {
                         bang := game bangs removeAt(0)
                         e expires = 0.5
-                        e scale = (0.2, 0.2) as Vector2d
+                        e scale = (0.2, 0.2) as Vector2d 
                         e scaleTween = (0.2/100, 0.5, -3, false, true) as ScaleTween
                         e position = (bang x, bang y) as Point2d
                         e active = true
