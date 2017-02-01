@@ -22,11 +22,11 @@ Entity: class {
     scaleTween: ScaleTween      /* scale Tweening variables*/
     velocity: Vector2d          /* Cartesian velocity*/
     init: func() {
-
     }
 }
 
 createPlayer: func(game: Game, renderer: SdlRenderer, id: Int) -> Entity {
+    // player: Entity
     player := Entity new()
     player id = id
     player name = "Player" 
@@ -46,6 +46,7 @@ createPlayer: func(game: Game, renderer: SdlRenderer, id: Int) -> Entity {
 }
 
 createBullet: func(game: Game, renderer: SdlRenderer, id: Int) -> Entity {
+    // bullet: Entity
     bullet := Entity new()
     bullet id = id
     bullet name = "Bullet" 
@@ -53,7 +54,7 @@ createBullet: func(game: Game, renderer: SdlRenderer, id: Int) -> Entity {
     bullet actor = Actor BULLET
     bullet category = Category BULLET
     bullet position = (0, 0) as Point2d
-    bullet bounds = (0, 0, game bulletSurface@ w/2, game bulletSurface@ h/2) as SdlRect
+    bullet bounds = (0, 0, game bulletSurface@ w, game bulletSurface@ h/2) as SdlRect
     bullet sprite = (game bulletTexture, game bulletSurface@ w, game bulletSurface@ h) as Sprite
     bullet scale = (1, 1) as Vector2d
     bullet tint = (0xd2, 0xfa, 0x00, 0xfa) as SdlColor
@@ -65,6 +66,7 @@ createBullet: func(game: Game, renderer: SdlRenderer, id: Int) -> Entity {
 }
 
 createEnemy1: func(game: Game, renderer: SdlRenderer, id: Int) -> Entity {
+    // enemy1: Entity
     enemy1 := Entity new()
     enemy1 id = id
     enemy1 name = "Enemy1" 
@@ -84,6 +86,7 @@ createEnemy1: func(game: Game, renderer: SdlRenderer, id: Int) -> Entity {
 }
 
 createEnemy2: func(game: Game, renderer: SdlRenderer, id: Int) -> Entity {
+    // enemy2: Entity
     enemy2 := Entity new()
     enemy2 id = id
     enemy2 name = "Enemy2" 
@@ -103,6 +106,7 @@ createEnemy2: func(game: Game, renderer: SdlRenderer, id: Int) -> Entity {
 }
 
 createEnemy3: func(game: Game, renderer: SdlRenderer, id: Int) -> Entity {
+    // enemy3: Entity
     enemy3 := Entity new()
     enemy3 id = id
     enemy3 name = "Enemy3" 
@@ -122,6 +126,7 @@ createEnemy3: func(game: Game, renderer: SdlRenderer, id: Int) -> Entity {
 }
 
 createExplosion: func(game: Game, renderer: SdlRenderer, id: Int) -> Entity {
+    // explosion: Entity
     explosion := Entity new()
     explosion id = id
     explosion name = "Explosion" 
@@ -141,6 +146,7 @@ createExplosion: func(game: Game, renderer: SdlRenderer, id: Int) -> Entity {
 }
 
 createBang: func(game: Game, renderer: SdlRenderer, id: Int) -> Entity {
+    // bang: Entity
     bang := Entity new()
     bang id = id
     bang name = "Bang" 
@@ -166,6 +172,7 @@ createParticle: func(game: Game, renderer: SdlRenderer, id: Int) -> Entity {
     velocityY := magnitude * sin(radians)
     scale := Random randRange(0.1, 1.0)
 
+    // particle: Entity
     particle := Entity new()
     particle id = id
     particle name = "Particle" 

@@ -42,16 +42,16 @@ main: func (argc: Int, argv: CString*) {
 		}
 		mark1 = mark2
 
-		// t1 = Time microsec()
+		t1 = Time microsec()
         game update(delta)
-		// t1 = Time microsec() - t1
-		// //"time: %f" printfln(t1 as Double / 1000000)
-		// t2 = t2 + t1
-		// k = k + 1
-		// if (k == 1000) {
-		// 	"time: %f" printfln(t2 as Double/1000)
-		// }
-		Time sleepMilli(1)
+		t1 = Time microsec() - t1
+		//"time: %f" printfln(t1 as Double / 1000000)
+		t2 = t2 + t1
+		k = k + 1
+		if (k == 1000) {
+			"time: %f" printfln(t2 as Double/1000)
+		}
+		Time sleepMilli(3)
 		game draw(fps)
 	}
 	

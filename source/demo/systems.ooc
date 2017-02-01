@@ -26,17 +26,28 @@ Systems: class {
         // for (i in 1  entities size -1) system create(delta, entities[i]&)
 
     collision: func(delta: Double) {
-        for (i in 0..game entities size-1) {
-            if (game entities[i] active && game entities[i] category == Category ENEMY) {
-                for (j in 0..game entities size-1) {
-                    if (game entities[j] active && game entities[j] category == Category BULLET) {
-                        if (intersects(game entities[i] bounds, game entities[j] bounds)) {
-                            handleCollision(game entities[i], game entities[j])
+        for (a in game entities) {
+            if (a active && a category == Category ENEMY) {
+                for (b in game entities) {
+                    if (b active && b category == Category BULLET) {
+                        if (intersects(a bounds, b bounds)) {
+                            handleCollision(a, b)
                         }
                     }
                 }
             }
         }
+        // for (i in 0..game entities size-1) {
+        //     if (game entities[i] active && game entities[i] category == Category ENEMY) {
+        //         for (j in 0..game entities size-1) {
+        //             if (game entities[j] active && game entities[j] category == Category BULLET) {
+        //                 if (intersects(game entities[i] bounds, game entities[j] bounds)) {
+        //                     handleCollision(game entities[i], game entities[j])
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     /** 

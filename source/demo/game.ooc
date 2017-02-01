@@ -1,6 +1,7 @@
 use sdl2
 import math
 import structs/ArrayList
+import structs/LinkedList
 import sdl2/[Core, Event, Image, TTF, RW]
 import entities
 import components
@@ -37,7 +38,6 @@ Game: class {
     explosionTexture: SdlTexture
     
     /* assets */
-    // FONT_TTF:String       = "res/fonts/OpenDyslexic-Bold.otf"
     FONT_TTF:String       = "/home/bruce/ooc/demo/res/fonts/OpenDyslexic-Bold.otf"
     PLAYER_PNG:String     = "/home/bruce/ooc/demo/res/images/fighter.png"
     BULLET_PNG:String     = "/home/bruce/ooc/demo/res/images/bullet.png"
@@ -47,13 +47,13 @@ Game: class {
     PARTICLE_PNG:String   = "/home/bruce/ooc/demo/res/images/star.png"
     EXPLOSION_PNG:String  = "/home/bruce/ooc/demo/res/images/explosion.png"
 
-    particles: ArrayList<Point2d> = ArrayList<Point2d> new()
-    bullets: ArrayList<Point2d> = ArrayList<Point2d> new()
-    enemies1: ArrayList<Point2d> = ArrayList<Point2d> new()
-    enemies2: ArrayList<Point2d> = ArrayList<Point2d> new()
-    enemies3: ArrayList<Point2d> = ArrayList<Point2d> new()
-    explosions: ArrayList<Point2d> = ArrayList<Point2d> new()
-    bangs: ArrayList<Point2d> = ArrayList<Point2d> new()
+    particles: LinkedList<Point2d> = LinkedList<Point2d> new()
+    bullets: LinkedList<Point2d> = LinkedList<Point2d> new()
+    enemies1: LinkedList<Point2d> = LinkedList<Point2d> new()
+    enemies2: LinkedList<Point2d> = LinkedList<Point2d> new()
+    enemies3: LinkedList<Point2d> = LinkedList<Point2d> new()
+    explosions: LinkedList<Point2d> = LinkedList<Point2d> new()
+    bangs: LinkedList<Point2d> = LinkedList<Point2d> new()
 
     init: func(=renderer) {
 
@@ -134,28 +134,19 @@ Game: class {
         system input(delta, entities[0]) // entities[0] is the player
         for (e in entities) system create(delta, e)
 
-        act := ArrayList<Entity> new()
+        act := LinkedList<Entity> new()
+        // act := LinkedList<Entity> new()
         for (e in entities) if (e active) act add(e) 
         for (e in act) system expire(delta, e)
         for (e in act) system physics(delta, e)
         for (e in act) system scaleTween(delta, e)
         for (e in act) system removeOffscreen(delta, e)
 
-        // for (e in entities) system expire(delta, e)
-        // for (e in entities) system physics(delta, e)
-        // for (e in entities) system scaleTween(delta, e)
-        // for (e in entities) system removeOffscreen(delta, e)
-
-        // for (i in 1..entities size -1) system create(delta, entities[i])
-        // for (i in 1..entities size -1) system expire(delta, entities[i])
-        // for (i in 1..entities size -1) system physics(delta, entities[i])
-        // for (i in 1..entities size -1) system scaleTween(delta, entities[i])
-        // for (i in 1..entities size -1) system removeOffscreen(delta, entities[i])
     }
 
-    getEntities: func() -> ArrayList<Entity> {
-        entities
-    }
+    // getEntities: func() -> LinkedList<Entity> {
+    //     entities
+    // }
 
     handleEvents: func {
 		// e: SdlEvent
