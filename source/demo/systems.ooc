@@ -9,6 +9,7 @@ import game
 
 windowSize := (0, 0, 640, 720) as SdlRect 	
 
+
 Systems: class {
 
     enemyT1: Double = Timer1 as Double 
@@ -37,17 +38,6 @@ Systems: class {
                 }
             }
         }
-        // for (i in 0..game entities size-1) {
-        //     if (game entities[i] active && game entities[i] category == Category ENEMY) {
-        //         for (j in 0..game entities size-1) {
-        //             if (game entities[j] active && game entities[j] category == Category BULLET) {
-        //                 if (intersects(game entities[i] bounds, game entities[j] bounds)) {
-        //                     handleCollision(game entities[i], game entities[j])
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
     }
 
     /** 
@@ -158,7 +148,7 @@ Systems: class {
         if (e active && e category == Category ENEMY) {
             if (e position y > windowSize h) e active = false
         }
-    }
+    }5
 
     create: func(delta: Double, e: Entity) {
         if (!e active) {
@@ -166,55 +156,37 @@ Systems: class {
                 case Actor BULLET =>
                     if (game bullets size > 0) {
                         bullet := game bullets removeAt(0)
-                        e expires = 1
-                        e position = (bullet x, bullet y) as Point2d
-                        e active = true
+                        refreshBullet(e&, bullet x, bullet y)
                     }
                 case Actor ENEMY1 =>
                     if (game enemies1 size > 0) {
                         enemy := game enemies1 removeAt(0)
-                        e position = (Random randInt(0, windowSize w-45), 45) as Point2d
-                        e health = (10, 10) as Health
-                        e active = true
+                        refreshEnemy1(e&, Random randInt(0, windowSize w-45), 45) 
                     }
                 case Actor ENEMY2 =>
                     if (game enemies2 size > 0) {
                         enemy := game enemies2 removeAt(0)
-                        e position = (Random randInt(0, windowSize w-86), 86) as Point2d
-                        e health = (20, 20) as Health
-                        e active = true
+                        refreshEnemy2(e&, Random randInt(0, windowSize w-86), 86) 
                     }
                 case Actor ENEMY3 =>
                     if (game enemies3 size > 0) {
                         enemy := game enemies3 removeAt(0)
-                        e position = (Random randInt(0, windowSize w-160), 160) as Point2d
-                        e health = (60, 60) as Health
-                        e active = true
+                        refreshEnemy3(e&, Random randInt(0, windowSize w-160), 160)
                     }
                 case Actor EXPLOSION =>
                     if (game explosions size > 0) {
                         explosion := game explosions removeAt(0)
-                        e expires = 0.5
-                        e scale = (0.5, 0.5) as Vector2d
-                        e scaleTween = (0.5/100, 0.5, -3, false, true) as ScaleTween
-                        e position = (explosion x, explosion y) as Point2d
-                        e active = true
+                        refreshExplosion(e&, explosion x, explosion y)
                     }
                 case Actor BANG =>
                     if (game bangs size > 0) {
                         bang := game bangs removeAt(0)
-                        e expires = 0.5
-                        e scale = (0.2, 0.2) as Vector2d 
-                        e scaleTween = (0.2/100, 0.5, -3, false, true) as ScaleTween
-                        e position = (bang x, bang y) as Point2d
-                        e active = true
+                        refreshBang(e&, bang x, bang y) 
                     }
                 case Actor PARTICLE =>
                     if (game particles size > 0) {
                         particle := game particles removeAt(0)
-                        e expires = 0.5
-                        e position = (particle x, particle y) as Point2d
-                        e active = true
+                        refreshParticle(e&, particle x, particle y)
                     }
             }
         }

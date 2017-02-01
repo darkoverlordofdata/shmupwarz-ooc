@@ -107,15 +107,16 @@ Game: class {
         h := (e scale y != 0) ? e sprite height * e scale y : e sprite height
         x := e position x - w / 2
         y := e position y - h / 2
-        if (e tint r != 0 && e tint g != 0 && e tint b != 0) 
+        if (e tint r != 0 || e tint g != 0 || e tint b != 0) {
             SDL setTextureColorMod(e sprite texture, e tint r, e tint g, e tint b)
+        }
         SDL renderCopy(renderer, e sprite texture, null, (x, y, w, h) as SdlRect&)
         
     }
 
     draw: func(fps: Int)  {		
         
-        SDL setRenderDrawColor(renderer, 110, 132, 174, 255)
+        SDL setRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xff)
 		SDL renderClear(renderer)
         for (e in entities) {
             if (e active && e actor != Actor PLAYER)

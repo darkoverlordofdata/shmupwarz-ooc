@@ -7,6 +7,8 @@ import demo/game
 import os/Time
 import math
 
+
+
 windowSize := (0, 0, 640, 720) as SdlRect 	
 
 main: func (argc: Int, argv: CString*) {
