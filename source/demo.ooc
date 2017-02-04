@@ -7,11 +7,25 @@ import demo/game
 import os/Time
 import math
 
+import entitas/Entity
+import entitas/Exceptions
+import entitas/Group
+import entitas/Interfaces
+import entitas/Matcher
+import entitas/World
+import entitas/events/EntityChanged
+import entitas/events/EntityReleased
+import entitas/events/GroupChanged
+import entitas/events/GroupsChanged
+import entitas/events/GroupUpdated
+import entitas/events/WorldChanged
+import entitas/events/ComponentReplaced
 
 
 windowSize := (0, 0, 640, 720) as SdlRect 	
 
 main: func (argc: Int, argv: CString*) {
+	
 	SDL init(SDL_INIT_EVERYTHING)
     TTF init()
 

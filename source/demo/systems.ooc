@@ -17,14 +17,9 @@ Systems: class {
     enemyT3: Double = Timer3 as Double
     FireRate : Double = 0.1
     timeToFire: Double
-    //result: SdlRect
     game: Game
 
-    init: func(=game) {
-
-    }
-
-        // for (i in 1  entities size -1) system create(delta, entities[i]&)
+    init: func(=game) 
 
     collision: func(delta: Double) {
         for (a in game entities) {

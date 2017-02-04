@@ -123,7 +123,7 @@ Game: class {
                 drawSprite(e)
         }
         drawSprite(entities[0]) // Player on Top!
-        text := font renderUTF8Solid(fps toString(), (0,0,0,0) as SdlColor)
+        text := font renderUTF8Solid(fps toString(), (0xff, 0xff, 0xff, 0xff) as SdlColor)
         texture := SDL createTextureFromSurface(renderer, text)
         SDL renderCopy(renderer, texture, null, (5, 5, 56, 28) as SdlRect&)
 		SDL renderPresent(renderer)
@@ -136,8 +136,8 @@ Game: class {
         for (e in entities) system create(delta, e)
 
         act := LinkedList<Entity> new()
-        // act := LinkedList<Entity> new()
         for (e in entities) if (e active) act add(e) 
+        
         for (e in act) system expire(delta, e)
         for (e in act) system physics(delta, e)
         for (e in act) system scaleTween(delta, e)
