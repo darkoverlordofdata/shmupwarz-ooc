@@ -8,12 +8,8 @@ import Interfaces
 import Matcher
 import World
 
-IComponent: abstract class {
-}
-
-IOwner: interface {
-
-}
+IComponent: abstract class {}
+ 
 IMatcher: interface {
     getId: func -> String
     getIndices: func-> Int[]
@@ -42,14 +38,10 @@ IAllOfMatcher: interface {
 }
 
 
-// ISystem: interface  {
-
-// }
-
 ISystem: abstract class  {
-    setWorld: abstract func(world: World)
-    initialize: abstract func()
-    execute: abstract func()
+    setWorld: func(world: World){}
+    initialize: func(){}
+    execute: func(){}
 }
 
 ISetWorld: interface {

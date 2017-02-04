@@ -16,7 +16,6 @@ import events/GroupUpdated
 import events/WorldChanged
 import events/ComponentReplaced
 
-
 Entity: class {
 
     _creationIndex: Int
