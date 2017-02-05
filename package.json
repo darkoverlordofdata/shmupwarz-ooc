@@ -1,0 +1,23 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "# Can ooc replace vala?",
+  "main": "index.js",
+  "scripts": {
+    "entitas": "entitas"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darkoverlordofdata/shmupwarz-ooc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darkoverlordofdata/shmupwarz-ooc/issues"
+  },
+  "homepage": "https://github.com/darkoverlordofdata/shmupwarz-ooc#readme",
+  "devDependencies": {
+    "entitas-cli": "^0.1.3"
+  }
+}

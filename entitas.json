@@ -1,90 +1,90 @@
 {
-  "namespace": "ShmupWarz",
-  "src": "src",
+  "namespace": "shmupwarz",
+  "src": "source",
   "output": {
-    "systems": "Systems"
+    "systems": "entitas/Systems"
   },
   "alloc": {
     "entities": 128,
     "components": 64
   },
   "components": {
-    "Active": false,
     "Bounds": [
-      "radius:double"
+      "radius:Double"
     ],
     "Bullet": false,
     "ColorTween": [
-      "redMin:double",
-      "redMax:double",
-      "redSpeed:double",
-      "greenMin:double",
-      "greenMax:double",
-      "greenSpeed:double",
-      "blueMin:double",
-      "blueMax:double",
-      "blueSpeed:double",
-      "alphaMin:double",
-      "alphaMax:double",
-      "alphaSpeed:double",
-      "redAnimate:bool",
-      "greenAnimate:bool",
-      "blueAnimate:bool",
-      "alphaAnimate:bool",
-      "repeat:bool"
+      "redMin:Double",
+      "redMax:Double",
+      "redSpeed:Double",
+      "greenMin:Double",
+      "greenMax:Double",
+      "greenSpeed:Double",
+      "blueMin:Double",
+      "blueMax:Double",
+      "blueSpeed:Double",
+      "alphaMin:Double",
+      "alphaMax:Double",
+      "alphaSpeed:Double",
+      "redAnimate:Bool",
+      "greenAnimate:Bool",
+      "blueAnimate:Bool",
+      "alphaAnimate:Bool",
+      "repeat:Bool"
     ],
     "Destroy": false,
     "Enemy": false,
     "Expires": [
-      "delay:double"
+      "delay:Double"
     ],
     "Health": [
-      "health:double",
-      "maximumHealth:double"
+      "health:Double",
+      "maximumHealth:Double"
     ],
     "Layer": [
-      "ordinal:int"
+      "ordinal:Int"
     ],
     "Player": false,
     "Position": [
-      "x:double",
-      "y:double"
+      "x:Double",
+      "y:Double"
+    ],
+    "Resource": [
+      "path:String",
+      "sprite:SdlTexture",
+      "bgd:Bool"
     ],
     "ScaleTween": [
-      "min:double",
-      "max:double",
-      "speed:double",
-      "repeat:bool",
-      "active:bool"
+      "min:Double",
+      "max:Double",
+      "speed:Double",
+      "repeat:Bool",
+      "active:Bool"
     ],
     "Scale": [
-      "x:double",
-      "y:double"
+      "x:Double",
+      "y:Double"
     ],
     "Score": [
-      "value:double"
+      "value:Double"
     ],
     "SoundEffect": [
-      "effect:int"
+      "effect:Int"
     ],
     "Text": [
-      "text:string",
-      "sprite:sdx.graphics.s2d.Sprite?"
+      "text:String",
+      "sprite:SdlTexture"
     ],
     "Tint": [
-      "r:int",
-      "g:int",
-      "b:int",
-      "a:int"
+      "r:Int",
+      "g:Int",
+      "b:Int",
+      "a:Int"
     ],
     "Velocity": [
-      "x:double",
-      "y:double"
-    ],
-    "View": [
-      "sprite:sdx.graphics.s2d.Sprite?",
-      "centered:bool"
-    ]    
+      "x:Double",
+      "y:Double"
+    ]
   },
   "systems": {
     "CollisionSystem": [

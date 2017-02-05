@@ -20,7 +20,7 @@ import entitas/events/GroupsChanged
 import entitas/events/GroupUpdated
 import entitas/events/WorldChanged
 import entitas/events/ComponentReplaced
-
+import Components
 
 windowSize := (0, 0, 640, 720) as SdlRect 	
 

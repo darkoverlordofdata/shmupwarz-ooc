@@ -1,6 +1,6 @@
 use sdl2
 import math
-import sdl2/[Core, Event, Image]
+import sdl2/Core
 
 Input: enum {   
     /* User Input */

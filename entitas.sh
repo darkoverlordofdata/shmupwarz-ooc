@@ -24,24 +24,24 @@ fi
 #
 # create the schema & generate components
 #
-npm run entitas -- create -c Bounds radius:double
+npm run entitas -- create -c Bounds radius:Double
 npm run entitas -- create -c Bullet
-npm run entitas -- create -c ColorTween redMin:double redMax:double redSpeed:double greenMin:double greenMax:double greenSpeed:double blueMin:double blueMax:double blueSpeed:double alphaMin:double alphaMax:double alphaSpeed:double  redAnimate:bool greenAnimate:bool blueAnimate:bool alphaAnimate:bool repeat:bool
+npm run entitas -- create -c ColorTween redMin:Double redMax:Double redSpeed:Double greenMin:Double greenMax:Double greenSpeed:Double blueMin:Double blueMax:Double blueSpeed:Double alphaMin:Double alphaMax:Double alphaSpeed:Double  redAnimate:Bool greenAnimate:Bool blueAnimate:Bool alphaAnimate:Bool repeat:Bool
 npm run entitas -- create -c Destroy
 npm run entitas -- create -c Enemy
-npm run entitas -- create -c Expires delay:double
-npm run entitas -- create -c Health health:double maximumHealth:double
-npm run entitas -- create -c Layer ordinal:int
+npm run entitas -- create -c Expires delay:Double
+npm run entitas -- create -c Health health:Double maximumHealth:Double
+npm run entitas -- create -c Layer ordinal:Int
 npm run entitas -- create -c Player
-npm run entitas -- create -c Position x:double y:double
-npm run entitas -- create -c Resource path:string sprite:Object? bgd:bool
-npm run entitas -- create -c ScaleTween min:double max:double speed:double repeat:bool active:bool
-npm run entitas -- create -c Scale x:double y:double
-npm run entitas -- create -c Score value:double
-npm run entitas -- create -c SoundEffect effect:int
-npm run entitas -- create -c Text text:string sprite:Object?
-npm run entitas -- create -c Tint r:int g:int b:int a:int
-npm run entitas -- create -c Velocity x:double y:double
+npm run entitas -- create -c Position x:Double y:Double
+npm run entitas -- create -c Resource path:String sprite:SdlTexture bgd:Bool
+npm run entitas -- create -c ScaleTween min:Double max:Double speed:Double repeat:Bool active:Bool
+npm run entitas -- create -c Scale x:Double y:Double
+npm run entitas -- create -c Score value:Double
+npm run entitas -- create -c SoundEffect effect:Int
+npm run entitas -- create -c Text text:String sprite:SdlTexture
+npm run entitas -- create -c Tint r:Int g:Int b:Int a:Int
+npm run entitas -- create -c Velocity x:Double y:Double
 npm run entitas -- create -s CollisionSystem ISetWorld IExecuteSystem IInitializeSystem
 npm run entitas -- create -s ColorTweenSystem ISetWorld IExecuteSystem
 npm run entitas -- create -s EntitySpawningTimerSystem ISetWorld IExecuteSystem IInitializeSystem
@@ -54,4 +54,4 @@ npm run entitas -- create -s RenderPositionSystem ISetWorld IExecuteSystem
 npm run entitas -- create -s SoundEffectSystem ISetWorld IExecuteSystem IInitializeSystem
 npm run entitas -- create -s ScaleTweenSystem ISetWorld IExecuteSystem
 npm run entitas -- create -s ViewManagerSystem ISetWorld IExecuteSystem
-npm run entitas -- generate -p gs -t src
+npm run entitas -- generate -p ooc -t source
