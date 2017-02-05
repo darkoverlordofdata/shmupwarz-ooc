@@ -1,8 +1,8 @@
 {
   "namespace": "shmupwarz",
-  "src": "source",
+  "src": "src",
   "output": {
-    "systems": "entitas/Systems"
+    "systems": "Systems"
   },
   "alloc": {
     "entities": 128,

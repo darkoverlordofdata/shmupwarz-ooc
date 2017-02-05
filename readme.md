@@ -26,11 +26,13 @@ Cons
 * Not actively maintained (alt: https://github.com/magic-lang/rock/tree/rock_1.0.22)
 * Not much activity on github
 
-Learning Issues:
+Issues:
 * Rock doesn't warn about mixing numeric types, it just returns garbage at run time. You need to be very explicit.
+* Property setters defined in extend are unable to reference the global scope.
+* Can't always pass expressions as parameters, I need to save in local variables and pass them.
 * Calculations with PI return garbage. I have to use 3.14159. Its probably the above type issue.
 * Install instructions are wrong. Seems written for OSX, and maybe there are just no Ubuntu instruction?
-* Documentation is 'sprawling'. Not easily usable as a reference. 
+* Documentation is 'sprawling', incorrect in places. Not easily usable as a reference. 
 
 
 Performance is slippery, but I average the time spent in the update cycle per 1000 frames.

@@ -1,0 +1,6 @@
+Name: demo
+Version: 0.1.0
+Requires: sdl2
+SourcePath: src
+Main: Game.ooc
+Imports: Game.ooc
